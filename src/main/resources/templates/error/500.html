@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Page Not Found</title>
+    <style type="text/css">
+        #nav-home {
+            color: darkblue;
+        }
+    </style>
+</head>
+<body>
+<h1>The server encountered an internal error or misconfiguration</h1>
+<h3>
+    Go back to <a id="nav-home" th:href="@{/files}">Home Page</a>.
+</h3>
+<h1 th:text="${status + ' ' + error}"></h1></body>
+<img th:src="@{/img/img_1.png}" style="width:304px;height:228px"/>
+
+</html>

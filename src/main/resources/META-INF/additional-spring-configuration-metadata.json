@@ -1,0 +1,19 @@
+{
+  "properties": [
+    {
+      "name": "spring.jpa.hibernate.dialect",
+      "type": "java.lang.String",
+      "description": "Description for spring.jpa.hibernate.dialect."
+    },
+    {
+      "name": "spring.sql.init.mode",
+      "type": "java.lang.String",
+      "description": "Description for spring.sql.init.mode."
+    },
+    {
+      "name": "spring.servlet.multipart.max-file-size-threshold",
+      "type": "java.lang.String",
+      "description": "Description for spring.servlet.multipart.max-file-size-threshold."
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/bootstrap.min.css}">
+
+    <title>Home</title>
+</head>
+<body class="p-3 mb-2 bg-light text-black">
+<!--  NOTE INPUT AREA  -->
+<div class="container">
+    <form modelAttribute="noteForm" th:action="@{/newNote}" method="POST">
+        <input type="hidden" name="noteid" id="note-id">
+        <div class="form-group">
+            <label for="note-title" class="col-form-label">Title</label>
+            <input type="text" name="notetitle" class="form-control" id="note-title" maxlength="20" required>
+        </div>
+        <div class="form-group">
+            <label for="note-description" class="col-form-label">Description</label>
+            <textarea class="form-control" name="notedescription" id="note-description" rows="5" maxlength="1000"
+                      required></textarea>
+        </div>
+        <div class="modal-footer">
+            <a th:href="@{notes}" type="button" class="btn btn-secondary" data-dismiss="modal">Back To Notes</a>
+            <button type="submit" class="btn btn-primary">Save Note</button>
+        </div>
+
+    </form>
+</div>
+
+<script th:src="@{/js/bootstrap.min.js}"></script>
+
+</body>
+</html>

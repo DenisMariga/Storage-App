@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/bootstrap.min.css}">
+
+    <title>Home</title>
+</head>
+<body class="p-3 mb-2 bg-light text-black">
+<div class="container">
+    <div id="logoutDiv">
+<!--        <span class="nav-link">[[${#request.remoteUser}]]</span>-->
+        <span sec:authentication="name"></span>
+        <form th:action="@{/logout}" action="#" method="POST">
+            <button id="logout-button" type="submit" class="btn btn-secondary float-right">Logout</button>
+        </form>
+    </div>
+    <div id="contentDiv" style="clear: right;">
+        <nav style="clear: right;">
+            <!-- NAVIGATION AREA -->
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                <a class="nav-item nav-link active" id="nav-files-tab" data-toggle="tab" th:href="@{files}" role="tab"
+                   aria-controls="nav-files" aria-selected="true">Files</a>
+                <a class="nav-item nav-link " id="nav-notes-tab" data-toggle="tab" th:href="@{notes}" role="tab"
+                   aria-controls="nav-notes" aria-selected="false">Notes</a>
+                <a class="nav-item nav-link " id="nav-credentials-tab" data-toggle="tab" th:href="@{credentials}"
+                   role="tab" aria-controls="nav-credentials" aria-selected="false">Credentials</a>
+            </div>
+        </nav>
+        <div class="tab-content" id="nav-tabContent">
+            <!-- FILE AREA STARTS HERE -->
+            <div class="tab-pane fade show active" id="nav-files" role="tabpanel" aria-labelledby="nav-files-tab">
+                <form th:action="@{/uploadFiles}" enctype="multipart/form-data" method="POST" name="file">
+                    <div class="container">
+                        <div class="row" style="margin: 1em;">
+                            <div class="col-sm-2">
+                                <label for="fileUpload">Upload a New File:</label>
+                            </div>
+                            <div class="col-sm-6">
+                                <input type="file" name="files" class="form-control-file" id="fileUpload">
+                            </div>
+                            <div class="col-sm-4">
+                                <button type="submit" class="btn btn-dark">Upload</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="table-responsive">
+                    <table class="table table-striped" id="fileTable">
+                        <thead>
+                        <tr>
+                            <th style="width: 20%" scope="col"></th>
+                            <th style="width: 80%" scope="col">File Name</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="file: ${files}">
+                            <td>
+                                <a th:href="@{'/downloadFile/'+ ${file.id}}" target="_blank" class="btn btn-success">View</a>
+                                <a th:href="@{'/delete'+ ${file.id}}" class="btn btn-danger">Delete</a>
+                            </td>
+                            <th scope="row" th:text="${file.docName}">ExampleFile.txt</th>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- FILE AREA ENDS HERE -->
+
+        </div>
+
+    </div>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+
+</div>
+</body>
+</html>
+
+
